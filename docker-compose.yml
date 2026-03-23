@@ -1,0 +1,59 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      retries: 10
+    environment:
+       MYSQL_DATABASE: ${DB}
+       MYSQL_USER: ${DB_USER}
+       MYSQL_PASSWORD: ${DB_PASSWORD}
+       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    image: ubiracyifto/est-backend
+    build: ./BackEnd
+    container_name: spring-api
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${DB}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  frontend:
+    image: ubiracyifto/frontend
+    build:
+      context: ./FrontEnd
+      target: development    
+    container_name: react-app
+    environment:
+      VITE_API_URL: /api
+    volumes:
+      - ./FrontEnd:/app
+      - /app/node_modules
+    stdin_open: true
+    depends_on:
+      - backend
+
+  gateway:
+    image: nginx:alpine
+    container_name: api-gateway
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+      - frontend
+
+volumes:
+  db_data:

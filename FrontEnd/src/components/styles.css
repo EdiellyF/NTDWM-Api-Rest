@@ -1,0 +1,212 @@
+/* Reset e Base */
+:root {
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.05);
+  --card-hover-bg: rgba(255, 255, 255, 0.9);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --accent: #3b82f6;
+  --warning: #ef4444; 
+  --warning-bg: rgba(239, 68, 68, 0.15); 
+}
+
+[data-theme='dark'] {
+  /* Paleta Dark */
+  --bg-gradient: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+  --card-bg: rgba(30, 41, 59, 0.5); /* Slate-800 com transparência */
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-hover-bg: rgba(30, 41, 59, 0.8);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-color: #38bdf8;
+  --warning: #f87171; 
+  --warning-bg: rgba(248, 113, 113, 0.2);
+}
+
+body { margin: 0; padding: 0; transition: background 0.3s ease; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #020617; /* Evita o "flash" branco ao carregar */
+}
+.page-wrapper {
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1f2937;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* Grid System */
+.bento-grid {
+  display: grid;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  grid-template-columns: 1fr; /* Mobile: 1 coluna */
+}
+
+/* Componente Card */
+.bento-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 24px;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: auto; /* Empurra o texto para baixo */
+  padding-bottom: 24px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--text-main); 
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Efeito Hover */
+.bento-card:hover {
+  transform: scale(1.02);
+  background: var(--card-hover-bg);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+
+.theme-toggle {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-main);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s;
+}
+
+/* Para LINK*/
+
+.no-underline{
+  text-decoration: none;
+  color: inherit
+}
+
+.link{
+  display: contents;
+}
+
+.back-button {
+  text-decoration: none;
+  background: var(--card-bg); /* Use suas variáveis de tema */
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+  background: var(--hover-bg);
+}
+
+.theme-toggle:hover {
+  transform: translateX(+5px);
+  background: var(--hover-bg);
+}
+
+header{
+  display: flex; 
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px
+}
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  all: unset;
+  cursor: pointer;
+}
+
+.center{
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn-wrapper{
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.delete-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+}
+
+.delete-overlay:hover{
+  background: var(--warning-bg);
+  border-color: var(--warning);
+  color: var(--warning);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transform: 0.2s;
+}
+
+/* Desktop Layout (768px+) */
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+  }
+
+  .span-2x2 { grid-column: span 2; grid-row: span 2; }
+  .span-2x1 { grid-column: span 2; }
+  .span-1x2 { grid-row: span 2; }
+}
