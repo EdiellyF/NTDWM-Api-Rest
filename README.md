@@ -24,13 +24,37 @@ O projeto utiliza o conceito de isolamento de serviços:
 
 ### Passo a Passo
 
+#### **Opção A: Rodar via Docker Hub (Rápido)**
+1. Baixe os arquivos `docker-compose.yml`, `env.example` e `nginx.conf`.
+2. Renomeie o arquivo `env.example` para `.env` e ajuste as variáveis.
+3. No terminal, execute:
+   ```bash
+   docker-compose up -d
+
+#### **Opção B: Montar arquivos do GitHub**
+
 1. **Clone o repositório:**
-   No terminal use:
+   
+   No terminal, use:
+   ```bash
    git clone https://github.com/EdiellyF/NTDWM-Api-Rest.git
    cd NTDWM-Api-Rest
-2. Faça a build dos containers
-    Altere as variaveis no arquivo .env
-    certifique que o nginx.conf esteja na mesma pasta
-    use docker-compose up --build -d
-3. Acesse a aplicação:
-   http:localhost
+   ```
+
+2. **Faça a build dos containers:**
+
+   - Altere as variáveis no arquivo `env.example` e renomeie-o para `.env`
+   - Certifique-se de que o arquivo `nginx.conf` esteja na mesma pasta
+   - Execute o comando:
+   
+   ```bash
+   docker-compose up --build -d
+   ```
+
+   Esse comando irá buildar os arquivos do repositório e criar as imagens a partir deles.
+
+3. **Acesse a aplicação:**
+
+   ```
+   http://localhost
+   ```
