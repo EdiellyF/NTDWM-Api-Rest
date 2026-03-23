@@ -37,9 +37,6 @@ services:
     container_name: react-app
     environment:
       VITE_API_URL: /api
-    volumes:
-      - ./FrontEnd:/app
-      - /app/node_modules
     stdin_open: true
     depends_on:
       - backend
