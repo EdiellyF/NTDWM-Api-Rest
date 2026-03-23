@@ -30,7 +30,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
   frontend:
-    image: ubiracyifto/frontend
+    image: ubiracyifto/est-frontend
     build:
       context: ./FrontEnd
       target: development    
