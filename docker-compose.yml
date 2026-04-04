@@ -32,9 +32,10 @@ services:
   frontend:
     image: ubiracyifto/est-frontend
     build:
-      context: ./FrontEnd
+      context: ./Front-End-Vue
       target: development    
-    container_name: react-app
+    container_name: vue-app
+    command: npm run dev -- --host
     environment:
       VITE_API_URL: /api
     stdin_open: true
