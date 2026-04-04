@@ -18,11 +18,12 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<ProductDTO>> getProducts(){
         var products = productService.findAll();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id){
