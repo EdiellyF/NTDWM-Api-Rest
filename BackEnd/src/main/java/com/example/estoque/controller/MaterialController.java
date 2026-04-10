@@ -17,7 +17,7 @@ public class MaterialController {
     public MaterialController(MaterialService materialService) {
         this.materialService = materialService;
     }
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<MaterialDTO>> findAll() {
         return new ResponseEntity<>(materialService.findAll(), HttpStatus.OK);
     }

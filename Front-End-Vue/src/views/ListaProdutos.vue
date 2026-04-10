@@ -1,11 +1,12 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useEstoqueStore } from '../stores/estoque'
-import ProductCard from "../components/ProductCard.vue"
+import { useEstoqueStore } from '@/stores/estoque'
+import ProductCard from '@/components/ProductCard.vue'
 
-const estoque = useEstoqueStore() 
+const estoque = useEstoqueStore()
+
 onMounted(() => {
-  estoque.carregarDados() 
+  estoque.carregarDados()
 })
 </script>
 
@@ -16,13 +17,33 @@ onMounted(() => {
       <span class="count">{{ estoque.listaProdutos.length }} itens</span>
     </div>
 
-    <div v-if="estoque.listaProdutos.length > 0" class="product-grid">
-      <ProductCard 
-        v-for="item in estoque.listaProdutos" 
-        :key="item.id" 
-        :nomeProduto="item.name" 
-        :quantidade="item.amountStored" 
+    <div v-if="estoque.carregando" class="feedback">Carregando...</div>
+
+    <div v-else-if="estoque.erro" class="feedback erro">{{ estoque.erro }}</div>
+
+    <div v-else-if="estoque.listaProdutos.length === 0" class="feedback">
+      Nenhum produto cadastrado.
+    </div>
+
+    <div v-else class="product-grid">
+      <ProductCard
+        v-for="item in estoque.listaProdutos"
+        :key="item.id"
+        :nomeProduto="item.name"
+        :quantidade="item.amountStored"
       />
     </div>
   </main>
 </template>
+
+<style scoped>
+.feedback {
+  text-align: center;
+  padding: 40px 20px;
+  color: #64748b;
+  font-size: 1rem;
+}
+.feedback.erro {
+  color: #ef4444;
+}
+</style>

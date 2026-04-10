@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue.js — Da Evolução à Prática</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/moon.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --vue-green: #42b883;
+      --vue-dark: #35495e;
+      --purple: #8b5cf6;
+      --blue: #3b82f6;
+      --red: #ef4444;
+      --amber: #f59e0b;
+    }
+    .reveal { font-family: 'Inter', sans-serif; }
+    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Inter', sans-serif; font-weight: 800; text-transform: none; }
+    .reveal h1 { font-size: 2.2em; }
+    .reveal h2 { font-size: 1.6em; color: var(--vue-green); }
+    .reveal h3 { font-size: 1.1em; color: #e2e8f0; }
+    .reveal code, .reveal pre code { font-family: 'Fira Code', monospace; font-size: 0.55em; }
+    .reveal pre { width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-radius: 10px; }
+    .reveal pre code { padding: 16px !important; border-radius: 10px; }
+    .vue-tag { display: inline-block; background: var(--vue-green); color: #fff; padding: 4px 14px; border-radius: 20px; font-weight: 700; font-size: 0.7em; margin-bottom: 10px; }
+    .timeline { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
+    .timeline-item { background: rgba(66,184,131,0.12); border: 1px solid var(--vue-green); border-radius: 12px; padding: 16px 20px; flex: 1; max-width: 220px; }
+    .timeline-item h4 { color: var(--vue-green); margin: 0 0 6px 0; font-size: 0.85em; }
+    .timeline-item p { font-size: 0.65em; margin: 0; color: #cbd5e1; line-height: 1.4; }
+    .cols { display: flex; gap: 24px; margin-top: 16px; }
+    .col { flex: 1; border-radius: 12px; padding: 18px; }
+    .col-pros { background: rgba(34,197,94,0.1); border: 1px solid #22c55e; }
+    .col-cons { background: rgba(239,68,68,0.1); border: 1px solid #ef4444; }
+    .col h4 { font-size: 0.85em; margin: 0 0 10px 0; }
+    .col-pros h4 { color: #22c55e; }
+    .col-cons h4 { color: #ef4444; }
+    .col ul { margin: 0; padding-left: 18px; font-size: 0.6em; line-height: 1.7; color: #e2e8f0; }
+    .arch-box { background: rgba(139,92,246,0.1); border: 1px solid var(--purple); border-radius: 12px; padding: 16px; margin-top: 14px; }
+    .arch-box h4 { color: var(--purple); margin: 0 0 8px 0; font-size: 0.8em; }
+    .arch-box p, .arch-box pre { font-size: 0.55em; color: #cbd5e1; margin: 4px 0; }
+    .directive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .directive-card { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; padding: 14px; }
+    .directive-card h4 { color: var(--blue); margin: 0 0 6px 0; font-size: 0.75em; }
+    .directive-card pre { margin: 0; box-shadow: none; border-radius: 6px; }
+    .directive-card pre code { font-size: 0.5em; padding: 8px !important; }
+    .props-flow { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; font-size: 0.65em; }
+    .props-flow .box { background: rgba(66,184,131,0.15); border: 1px solid var(--vue-green); border-radius: 8px; padding: 10px 16px; color: #e2e8f0; font-weight: 600; }
+    .props-flow .arrow { color: var(--vue-green); font-size: 1.4em; font-weight: 800; }
+    .slide-number { position: fixed; bottom: 12px; right: 16px; font-size: 0.5em; color: #64748b; }
+    .emoji-big { font-size: 1.4em; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ==================== SLIDE 0: CAPA ==================== -->
+      <section>
+        <p class="vue-tag">APRESENTAÇÃO ACADÊMICA</p>
+        <h1 style="color:#42b883">Vue.js</h1>
+        <h3 style="color:#e2e8f0">Da Evolução à Prática com Mini-SPA de Estoque</h3>
+        <p style="font-size:0.65em; color:#94a3b8; margin-top:30px">
+          Composition API · Vue Router · Pinia · Axios
+        </p>
+      </section>
+
+      <!-- ==================== SLIDE 1: EVOLUÇÃO ==================== -->
+      <section>
+        <p class="vue-tag">SLIDE 1</p>
+        <h2>A Evolução do Vue.js</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>2014</h4>
+            <p>Evan You cria o Vue após trabalhar no Google Creative Lab — buscando o melhor entre Angular e React</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Vue 2 · 2016</h4>
+            <p>Options API: data(), methods, computed, watch — organização por <strong>tipo</strong></p>
+          </div>
+          <div class="timeline-item">
+            <h4>Vue 3 · 2020</h4>
+            <p>Composition API: ref(), reactive(), onMounted() — organização por <strong>funcionalidade</strong></p>
+          </div>
+        </div>
+        <div style="margin-top:28px">
+          <h3>O fim do <code style="color:#ef4444">this</code></h3>
+          <pre><code class="language-js">// Options API (Vue 2) — this por toda parte
+export default {
+  data() { return { lista: [] } },
+  methods: { carregar() { this.lista = [...] } }  // this.lista
+}
+
+// Composition API (Vue 3) — sem this
+const listaMateriais = ref([])
+async function carregarDados() {
+  listaMateriais.value = resposta.data   // direto, sem this
+}</code></pre>
+        </div>
+        <aside class="notes">
+          Em 2014, Evan You olhou para o ecossistema e disse: eu quero a declaratividade do Angular sem o peso, e a componentização do React sem a complexidade. Nasceu o Vue. O Vue 2 nos trouxe a Options API — você organizava o código por "tipo": todos os dados em data(), todos os métodos em methods. Funcionava, mas quando a funcionalidade crescia, você pulava entre blocos diferentes. O Vue 3 veio com a Composition API e resolveu isso. No meu projeto, eu uso script setup em todos os componentes. No meu stores/materiais.js, eu declaro const listaMateriais = ref([]) e a função carregarDados() logo abaixo — tudo relacionado à carga de dados fica junto, num bloco lógico. E o this? Acabou. Quando eu chamo materiais.carregarDados() dentro do onMounted no meu ListaMateriais.vue, eu não uso this.carregarDados() — acesso diretamente a constante importada da store.
+        </aside>
+      </section>
+
+      <!-- ==================== SLIDE 2: REATIVIDADE E DIRETIVAS ==================== -->
+      <section>
+        <p class="vue-tag">SLIDE 2</p>
+        <h2>O Coração do Vue — Reatividade e Diretivas</h2>
+
+        <div class="directive-grid">
+          <div class="directive-card">
+            <h4>ref() — Reatividade</h4>
+            <pre><code class="language-js">// stores/materiais.js
+const listaMateriais = ref([])
+const carregando = ref(false)
+const erro = ref(null)</code></pre>
+          </div>
+          <div class="directive-card">
+            <h4>v-for — Renderização de lista</h4>
+            <pre><code class="language-html">&lt;!-- ListaMateriais.vue --&gt;
+&lt;div v-for="item in materiais.listaMateriais"
+     :key="item.id"&gt;</code></pre>
+          </div>
+          <div class="directive-card">
+            <h4>v-model — Two-way binding</h4>
+            <pre><code class="language-html">&lt;!-- CadastroMateriais.vue --&gt;
+&lt;input v-model="formData.name" /&gt;
+&lt;input v-model.number="formData.amountStored" /&gt;</code></pre>
+          </div>
+          <div class="directive-card">
+            <h4>v-if / v-else-if — Condicional</h4>
+            <pre><code class="language-html">&lt;!-- ListaMateriais.vue --&gt;
+&lt;div v-if="materiais.carregando"&gt;Carregando...&lt;/div&gt;
+&lt;div v-else-if="materiais.erro"&gt;{{ materiais.erro }}&lt;/div&gt;
+&lt;div v-else-if="listaMateriais.length === 0"&gt;Vazio&lt;/div&gt;
+&lt;div v-else class="material-grid"&gt;...&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
+        <div class="props-flow">
+          <div class="box">ListaMateriais.vue<br/><code>:nomeMaterial="item.name"</code><br/><code>:quantidade="item.amountStored"</code></div>
+          <div class="arrow">→ props →</div>
+          <div class="box">MaterialCard.vue<br/><code>defineProps({ nomeMaterial, quantidade })</code></div>
+        </div>
+
+        <aside class="notes">
+          A reatividade é o coração do Vue. Quando eu declaro const listaMateriais = ref([]) na minha store, o Vue cria um Proxy por baixo dos panos. Qualquer alteração em listaMateriais.value dispara uma atualização automática na interface. As diretivas tornam isso visível: v-for para iterar sobre materiais.listaMateriais, :key para identificação única. O v-model é two-way binding — no CadastroMateriais.vue, quando o usuário digita, formData.name atualiza automaticamente. O modificador .number converte para Number. O v-if / v-else-if é renderização condicional real — encadeio quatro estados: carregando, erro, lista vazia, lista com dados. E a comunicação entre componentes: no ListaMateriais.vue, eu passo dados para o filho MaterialCard via props — :nomeMaterial e :quantidade. O filho recebe com defineProps e renderiza. Dados descem via props, eventos sobem via emits.
+        </aside>
+      </section>
+
+      <!-- ==================== SLIDE 3: ARQUITETURA ==================== -->
+      <section>
+        <p class="vue-tag">SLIDE 3</p>
+        <h2>Arquitetura da Mini-SPA</h2>
+
+        <div class="cols">
+          <div class="arch-box" style="flex:1">
+            <h4>🔀 Vue Router — router/index.js</h4>
+            <pre><code class="language-js">routes: [
+  { path: '/',             component: ListaProdutos },
+  { path: '/cadastro',     component: CadastroProdutos },
+  { path: '/materiais',    component: ListaMateriais },
+  { path: '/materiais/cadastro', component: CadastroMateriais },
+  { path: '/:pathMatch(.*)*',    component: ListaProdutos }
+]</code></pre>
+            <p>Lazy loading com <code>() => import()</code></p>
+          </div>
+          <div class="arch-box" style="flex:1">
+            <h4>📦 Pinia — stores/materiais.js</h4>
+            <pre><code class="language-js">export const useMateriaisStore = defineStore('materiais', () => {
+  const listaMateriais = ref([])
+  async function carregarDados() { ... }
+  async function criarMaterial()  { ... }
+  async function deletarMaterial() { ... }
+  async function atualizarMaterial() { ... }
+  return { listaMateriais, carregando, erro,
+           carregarDados, criarMaterial,
+           deletarMaterial, atualizarMaterial }
+})</code></pre>
+          </div>
+        </div>
+
+        <div class="cols" style="margin-top:14px">
+          <div class="arch-box" style="flex:1">
+            <h4>🌐 Axios — services/api.js</h4>
+            <pre><code class="language-js">const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost/api',
+  headers: { 'Content-Type': 'application/json' }
+})
+
+// Consumo na store com async/await:
+const resposta = await api.get('/materials/')
+await api.post('/materials/create', novoMaterial)
+await api.patch(`/materials/${id}/update`, material)
+await api.delete(`/materials/${id}/delete`)</code></pre>
+          </div>
+          <div class="arch-box" style="flex:1">
+            <h4>🏛️ Infra — nginx + Spring Boot</h4>
+            <pre><code class="language-nginx"># nginx.conf
+location /api/ {
+    proxy_pass http://backend:8080/;
+}
+
+# Fluxo:
+# Browser → nginx(:80/api/materials)
+#         → Spring Boot(:8080/materials)
+#         → MySQL(:3306)</code></pre>
+          </div>
+        </div>
+
+        <aside class="notes">
+          A arquitetura tem três pilares: Vue Router, Pinia e Axios. O Vue Router é responsável pela navegação sem reload — configurei quatro rotas com lazy loading, cada view só é baixada quando o usuário acessa aquela rota. O Pinia é o gerenciador de estado global — escolhi Pinia em vez de Vuex porque ele foi construído para a Composition API. A store expõe listaMateriais, carregando, erro e quatro funções assíncronas. Qualquer componente que importar useMateriaisStore acessa o mesmo estado reativo. O Axios é a ponte com o microserviço — criei uma instância com baseURL apontando para /api, que o nginx faz proxy para o Spring Boot. Nas stores, consumo com async/await — o await pausa a execução até a Promise resolver, e o try/catch garante tratamento de erro.
+        </aside>
+      </section>
+
+      <!-- ==================== SLIDE 4: PRÓS E CONTRAS ==================== -->
+      <section>
+        <p class="vue-tag">SLIDE 4</p>
+        <h2>O Mercado — Prós e Contras</h2>
+
+        <div class="cols">
+          <div class="col col-pros">
+            <h4>✅ Pontos Fortes</h4>
+            <ul>
+              <li>Curva de aprendizado baixa — <code>&lt;script setup&gt;</code> é intuitivo</li>
+              <li>Flexibilidade — Options API <strong>ou</strong> Composition API</li>
+              <li>Reatividade granular — atualiza só o que mudou</li>
+              <li>Pinia &gt; Vuex — estado global sem boilerplate</li>
+              <li>SFC — HTML + JS + CSS num só arquivo</li>
+              <li>Documentação excepcional (traduzida PT-BR)</li>
+            </ul>
+          </div>
+          <div class="col col-cons">
+            <h4>⚠️ Pontos Fracos</h4>
+            <ul>
+              <li>Ecossistema corporativo menor que React/Angular</li>
+              <li>Bancos e grandes empresas ainda usam Angular/React</li>
+              <li>Menos vagas "enterprise" no mercado brasileiro</li>
+              <li>Adoção em grandes corporações ainda tímida</li>
+              <li>SSR/SEO exige Nuxt — camada extra de complexidade</li>
+              <li>TypeScript menos "first-class" que no React</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:28px; text-align:center">
+          <p style="font-size:0.7em; color:#94a3b8; font-style:italic; max-width:700px; margin:0 auto">
+            "Vue é a escolha certa para produtividade e times ágeis. Para o mercado enterprise brasileiro, saiba React ou Angular também — mas o futuro do Vue é promissor, e a Composition API prova que ele evolui na direção certa."
+          </p>
+        </div>
+
+        <aside class="notes">
+          Nenhum framework é perfeito. Os pontos fortes do Vue são inegáveis: a curva de aprendizado é a menor entre os três grandes. No meu projeto, escrevo script setup, declaro ref(), uso v-model e já tenho interface funcional. O Pinia eliminou o boilerplate do Vuex — sem mutations, sem commit e dispatch. Mas os pontos fracos existem: no mercado corporativo brasileiro, bancos e grandes empresas ainda têm projetos massivos em Angular e React. O ecossistema de bibliotecas enterprise é mais robusto no React. E se precisa de SSR para SEO, o Nuxt adiciona complexidade. A mensagem final: Vue é a escolha certa para produtividade, para times pequenos e médios. Para o mercado enterprise, é importante saber React ou Angular também. Mas o futuro do Vue é promissor.
+        </aside>
+      </section>
+
+      <!-- ==================== SLIDE FINAL ==================== -->
+      <section>
+        <h2 style="color:#42b883">Obrigado!</h2>
+        <p style="font-size:0.75em; color:#94a3b8; margin-top:20px">
+          Mini-SPA de Estoque · Vue 3 + Pinia + Vue Router + Axios
+        </p>
+        <p style="font-size:0.6em; color:#64748b; margin-top:30px">
+          Arquivos-chave do projeto:<br/>
+          <code>stores/materiais.js</code> ·
+          <code>views/ListaMateriais.vue</code> ·
+          <code>views/CadastroMateriais.vue</code><br/>
+          <code>components/MaterialCard.vue</code> ·
+          <code>router/index.js</code> ·
+          <code>services/api.js</code>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: 'slide',
+      plugins: [ RevealHighlight ],
+      width: 1100,
+      height: 700,
+      margin: 0.04
+    })
+  </script>
+</body>
+</html>
