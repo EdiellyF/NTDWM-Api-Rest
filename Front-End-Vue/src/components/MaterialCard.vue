@@ -1,13 +1,13 @@
 <script setup>
 defineProps({
-  nomeProduto: { type: String, required: true },
+  nomeMaterial: { type: String, required: true },
   quantidade: { type: Number, required: true }
 })
 </script>
 
 <template>
   <div class="card">
-    <h3 class="titulo-produto">{{ nomeProduto }}</h3>
+    <h3 class="titulo-material">{{ nomeMaterial }}</h3>
     <div class="info-estoque">
       <span class="label">Estoque atual</span>
       <div class="valor-estoque">
@@ -18,13 +18,11 @@ defineProps({
   </div>
 </template>
 
-
 <style scoped>
-
 .card {
   background-color: #ffffff;
-  border: 1px solid #e2e8f0; 
-  border-radius: 12px;   
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -32,22 +30,19 @@ defineProps({
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border-color: #3b82f6; 
+  border-color: #8b5cf6;
 }
 
-
-.titulo-produto {
+.titulo-material {
   color: #1e293b;
   font-size: 1.15rem;
   font-weight: 700;
   margin: 0 0 16px 0;
   letter-spacing: -0.5px;
 }
-
 
 .info-estoque {
   border-top: 1px solid #f1f5f9;
@@ -65,7 +60,6 @@ defineProps({
   letter-spacing: 0.05em;
 }
 
-
 .valor-estoque {
   display: flex;
   align-items: baseline;
@@ -73,7 +67,7 @@ defineProps({
 }
 
 .numero {
-  color: #0f172a; 
+  color: #0f172a;
   font-size: 1.75rem;
   font-weight: 800;
 }

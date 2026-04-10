@@ -1,19 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ListaProdutos from '../views/ListaProdutos.vue'
-import CadastroProdutos from '@/views/CadastroProdutos.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: ListaProdutos
+      component: () => import('@/views/ListaProdutos.vue')
     },
     {
       path: '/cadastro',
       name: 'cadastro',
-      component: CadastroProdutos
+      component: () => import('@/views/CadastroProdutos.vue')
+    },
+    {
+      path: '/materiais',
+      name: 'materiais',
+      component: () => import('@/views/ListaMateriais.vue')
+    },
+    {
+      path: '/materiais/cadastro',
+      name: 'cadastro-material',
+      component: () => import('@/views/CadastroMateriais.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/views/ListaProdutos.vue')
     }
   ]
 })

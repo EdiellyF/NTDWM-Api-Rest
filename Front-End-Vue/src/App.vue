@@ -6,8 +6,10 @@
   <div class="layout-geral">
     <nav class="navbar-profissional">
       <div class="links">
-        <RouterLink to="/" class="link"> Estoque</RouterLink>
+        <RouterLink to="/" class="link"> Produtos</RouterLink>
         <RouterLink to="/cadastro" class="link">➕ Novo Produto</RouterLink>
+        <RouterLink to="/materiais" class="link"> Materiais</RouterLink>
+        <RouterLink to="/materiais/cadastro" class="link">➕ Novo Material</RouterLink>
       </div>
     </nav>
     <main class="conteudo-dinamico">

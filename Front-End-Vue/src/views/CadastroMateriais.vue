@@ -1,23 +1,22 @@
 <script setup>
 import { ref } from 'vue'
-import { useEstoqueStore } from '@/stores/estoque'
+import { useMateriaisStore } from '@/stores/materiais'
 
-const estoque = useEstoqueStore()
+const materiais = useMateriaisStore()
 
 const formData = ref({
   name: '',
-  value: 0,
   amountStored: 0
 })
 
 const mensagem = ref(null)
 
 const handleSubmit = async () => {
-  const resultado = await estoque.criarProduto({ ...formData.value })
+  const resultado = await materiais.criarMaterial({ ...formData.value })
 
   if (resultado.success) {
-    mensagem.value = { tipo: 'sucesso', texto: 'Produto adicionado com sucesso!' }
-    formData.value = { name: '', value: 0, amountStored: 0 }
+    mensagem.value = { tipo: 'sucesso', texto: 'Material adicionado com sucesso!' }
+    formData.value = { name: '', amountStored: 0 }
   } else {
     mensagem.value = { tipo: 'erro', texto: resultado.mensagem || 'Erro ao salvar.' }
   }
@@ -32,12 +31,7 @@ const handleSubmit = async () => {
 
     <div class="field">
       <label>Nome:</label>
-      <input type="text" v-model="formData.name" placeholder="Digite o nome" required />
-    </div>
-
-    <div class="field">
-      <label>Valor:</label>
-      <input type="number" v-model.number="formData.value" step="0.01" min="0" />
+      <input type="text" v-model="formData.name" placeholder="Digite o nome do material" required />
     </div>
 
     <div class="field">
@@ -45,7 +39,7 @@ const handleSubmit = async () => {
       <input type="number" v-model.number="formData.amountStored" min="0" />
     </div>
 
-    <button type="submit">Salvar Dados</button>
+    <button type="submit">Salvar Material</button>
   </form>
 </template>
 
@@ -87,7 +81,7 @@ input {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #42b883;
+  background-color: #8b5cf6;
   color: white;
   border: none;
   border-radius: 4px;
@@ -96,6 +90,6 @@ button {
 }
 
 button:hover {
-  background-color: #35495e;
+  background-color: #6d28d9;
 }
 </style>
